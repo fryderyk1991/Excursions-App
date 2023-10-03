@@ -206,7 +206,6 @@ const deleteExcursion = (listItem) => {
     if (currentListItemId === excursionsArray[i].id) {
       excursionsArray.splice(i, 1);
       const displayCurrentExcursions = addExcursionsToDOM(excursionsArray);
-      //delete z api 
       const options = {method : 'DELETE'};
       fetch(`${apiUrl}/${currentListItemId}`, options)
       .then(res => console.log(res))
