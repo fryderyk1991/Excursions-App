@@ -1,4 +1,12 @@
 {
-    "excursions": [],
-    "orders": []
+  "excursions": [
+    {
+      "id": 1,
+      "title": "Warszawa",
+      "excDesc": "Plac zamkowy",
+      "aPrice": 23,
+      "chPrice": 23
+    }
+  ],
+  "orders": []
 }
