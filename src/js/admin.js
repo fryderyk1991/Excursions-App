@@ -4,6 +4,8 @@ import ExcursionsAPI from './ExcursionsAPI';
 
 document.addEventListener('DOMContentLoaded', init);
 
+const api = new ExcursionsAPI();
+
 function init () {
   console.log("admin");
   formElAdmin.addEventListener("submit", handleSubmit);
@@ -19,19 +21,12 @@ let getAccesToId;
 const handleSubmit = (e) => {
   e.preventDefault();
   const [name, description, adultPrice, childPrice] = formElAdmin.elements;
-
   const nameValue = name.value;
   const descriptionValue = description.value;
   const adultPriceValue = adultPrice.value;
   const childPriceValue = childPrice.value;
-  if (
-    nameValue.length === 0 || descriptionValue.length === 0 || adultPriceValue.length === 0 || childPriceValue.length === 0
-  ) {
-    alert("WAKE UP !!!");
-  } else {
-    passFormData(nameValue, descriptionValue, adultPriceValue, childPriceValue);
-    formElAdmin.reset();
-  }
+  passFormData(nameValue, descriptionValue, adultPriceValue, childPriceValue);
+  formElAdmin.reset()
 };
 
 let setId = 0;
@@ -47,9 +42,14 @@ const passFormData = (name, description, adultPrice, childPrice) => {
 
   excursionsArray.push(obj);
   addExcursionsToDOM(excursionsArray)
-  console.log(excursionsArray, 'pass form data')
-  
+  console.log(excursionsArray, 'pass form data');
+  sendExcursionsToApi(obj)
+};
 
+const sendExcursionsToApi = (obj) => {
+  // api.addData(obj)
+  // .catch(err => console.error(err))
+  
   const options = {
     method: 'POST',
     body: JSON.stringify( obj ),
@@ -58,7 +58,7 @@ const passFormData = (name, description, adultPrice, childPrice) => {
   fetch(apiUrl, options)
   .then(res => console.log(res))
   .catch(err => console.error(err))
-};
+}
 
 const addExcursionsToDOM = (excursionsArray) => {
 ulElement.innerHTML = "";
@@ -188,15 +188,9 @@ const [name, description, adultPrice, childPrice] = formElAdmin.elements;
   const descriptionValue = description.value;
   const adultPriceValue = parseInt(adultPrice.value);
   const childPriceValue = parseInt(childPrice.value);
-  if (
-    nameValue.length === 0 || descriptionValue.length === 0 || adultPriceValue.length === 0 || childPriceValue.length === 0
-  ) {
-    alert("WAKE UP !!!");
-  } else {
-    updateExcursion(nameValue, descriptionValue, adultPriceValue, childPriceValue);
-    formElAdmin.reset();
-  }
-  
+  updateExcursion(nameValue, descriptionValue, adultPriceValue, childPriceValue);
+  formElAdmin.reset();
+
 }
 
 

@@ -3,22 +3,10 @@
     {
       "id": 1,
       "title": "Kraków",
-      "excDesc": "rynek, kazimierz",
-      "aPrice": 50,
-      "chPrice": 25
+      "excDesc": "city tour",
+      "aPrice": 100,
+      "chPrice": 50
     }
   ],
-  "orders": [
-    [
-      {
-        "id": 1,
-        "title": "Kraków",
-        "adultNumber": 2,
-        "adultPrice": 50,
-        "childNumber": 2,
-        "childPrice": 25,
-        "sum": 150
-      }
-    ]
-  ]
+  "orders": []
 }
