@@ -5,6 +5,7 @@ import ExcursionsAPI from './ExcursionsAPI';
 document.addEventListener('DOMContentLoaded', init);
 
 const api = new ExcursionsAPI();
+const apiOrdersUrl = 'http://localhost:3000/orders';
 
 function init() {
     console.log('client');
