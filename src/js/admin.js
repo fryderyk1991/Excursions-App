@@ -17,9 +17,7 @@ function init () {
 
 const apiUrl = 'http://localhost:3000/excursions';
 const formElAdmin = document.querySelector(".form");
-// const excursionsArray = [];
 const ulElement = document.querySelector(".excursions");
-let getAccesToId;
 
 const handleSubmit = (e) => {
   e.preventDefault();
@@ -34,18 +32,12 @@ const handleSubmit = (e) => {
 
 // let setId = 0;
 const passFormData = (name, description, adultPrice, childPrice) => {
-  // setId++;
   const obj = {
-    // id: setId,
     title: name,
     excDesc: description,
     aPrice: +adultPrice,
     chPrice: +childPrice,
   };
-
-  // excursionsArray.push(obj);
-  // addExcursionsToDOM(excursionsArray)
-  // console.log(excursionsArray, 'pass form data');
   sendExcursionsToApi(obj)
 };
 
@@ -53,18 +45,19 @@ const sendExcursionsToApi = (obj) => {
   // api.addData(obj)
   // .catch(err => console.error(err))
   
-  const options = {
-    method: 'POST',
-    body: JSON.stringify( obj ),
-    headers: {'Content-Type': 'application/json'}
-  };
-  fetch(apiUrl, options)
-  .then(res => console.log(res))
-  .catch(err => console.error(err))
-  .finally(init)
-  // api.loadData()
-  // .then(data => addExcursionsToDOM(data))
+  // const options = {
+  //   method: 'POST',
+  //   body: JSON.stringify( obj ),
+  //   headers: {'Content-Type': 'application/json'}
+  // };
+  // fetch(apiUrl, options)
+  // .then(res => console.log(res))
   // .catch(err => console.error(err))
+  // .finally(init)
+  api.addData(obj)
+  .then(data => addExcursionsToDOM(data))
+  .catch(err => console.error(err))
+  
 }
 
 const addExcursionsToDOM = (excursionsArray) => {
@@ -89,16 +82,10 @@ excursionsArray.forEach(el => {
               </label>
             </div>
             <div class="excursions__field excursions__field--submit">
-              <input
-                class="excursions__field-input excursions__field-input--update"
-                value="edytuj"
-                type="submit"
-              />
-              <input
-                class="excursions__field-input excursions__field-input--remove"
-                value="usuń"
-                type="submit"
-              />
+              <button value="edytuj">edytuj
+              </button>
+              <button value="usuń">usuń
+              </button>
             </div>
         </form>
       </li>
@@ -120,33 +107,16 @@ const getAccesToTheForm = (form) => {
   form.addEventListener("click", handleUpdateRemove);  
 }
 
-
 const handleUpdateRemove = (e) => {
 e.preventDefault();
 if (e.target.value === 'edytuj'){
-  // edytuj 
-  // console.log(e.target.value)
-  const currentListItem = e.target.parentElement.parentElement.parentElement;
-  // getTheValueOfCurrentExcursion(currentListItem);
-  
-  // if(isEditable) {
-  //   updateExcursion(currentListItem, isEditable)
-  // }
-  // else {
-  //   e.target.innerText = 'Zapisz';
-  //   e.target.contentEditable = true;
-  // }
   updateExcursion(e)
 }
 if (e.target.value === "usuń") {
-  // usun
-  const currentListItem = e.target.parentElement.parentElement.parentElement;
-  deleteExcursion(currentListItem)
- 
-  // deleteExcursion(currentListItem)
-  // console.log(excursionsArray, 'delete excursion')
+  deleteExcursion(e)
 }
 }
+
 const updateExcursion = (e) => {
   const currentListItem = e.target.parentElement.parentElement.parentElement;
   const currentListItemId = +currentListItem.dataset.id;
@@ -159,35 +129,47 @@ const updateExcursion = (e) => {
       aPrice: valueToUpdate[2].innerText,
       chPrice: valueToUpdate[3].innerText,
     }
-    const options = {
-      method: 'PUT',
-      body: JSON.stringify( data ),
-      headers: { 'Content-Type': 'application/json' }
-      }
-      fetch(`${apiUrl}/${currentListItemId}`, options)
-        .then(resp => console.log(resp))
-        .catch(err => console.error(err))
-        .finally( () => {
-        e.target.innerText = 'edytuj';
+    // const options = {
+    //   method: 'PUT',
+    //   body: JSON.stringify( data ),
+    //   headers: { 'Content-Type': 'application/json' }
+    //   }
+    //   fetch(`${apiUrl}/${currentListItemId}`, options)
+    //     .then(resp => console.log(resp))
+    //     .catch(err => console.error(err))
+    //     .finally( () => {
+    //     e.target.innerText = 'edytuj';
+    //     valueToUpdate.forEach(
+    //     value => value.contentEditable = false);
+    //     init})
+    api.updateData(currentListItemId, data)
+    .then(data => addExcursionsToDOM(data))
+    .catch(err => console.err(err))
+    .finally (() => {
+      e.target.innerText = 'edytuj';
         valueToUpdate.forEach(
-        value => value.contentEditable = false);
-        init})
+        value => value.contentEditable = false)
+    })
   }
   else {
-    e.target.innerText = 'edytuj';
+    e.target.innerText = 'zapisz';
     valueToUpdate.forEach(value => value.contentEditable = true)
+    
   }
 }
 
 
-const deleteExcursion = (listItem) => {
-  const currentListItemId = +listItem.dataset.id;
-  console.log(currentListItemId)
-  // const id = +listItem.dataset.id;
-  const options = {method : 'DELETE'};
-        fetch(`${apiUrl}/${currentListItemId}`, options)
-        .then(res => console.log(res))
-        .catch(err => console.error(err))
-        .finally(init)
+const deleteExcursion = (e) => {
+  const currentListItem = e.target.parentElement.parentElement.parentElement;
+    const currentListItemId = +currentListItem.dataset.id;
+  // const options = {method : 'DELETE'};
+  //       fetch(`${apiUrl}/${currentListItemId}`, options)
+  //       .then(res => console.log(res))
+  //       .catch(err => console.error(err))
+  //       .finally(init)
+  api.deleteData(currentListItemId)
+  .then(res => console.log(res))
+  .catch(err => console.error(err))
+  .finally(init)
 }
 

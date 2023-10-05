@@ -204,16 +204,16 @@ const validate = (formEl) => {
 }
 
 const sendOrderToApi = () => {
-  // api.addOrder(basket)
-  // .catch(err => console.error(err))
-    const options = {
-        method: 'POST',
-        body: JSON.stringify( basket ),
-        headers: {'Content-Type': 'application/json'}
-      };
-      fetch(apiOrdersUrl, options)
-      .then(res => console.log(res))
-      .catch(err => console.error(err))
+  api.addOrder(basket)
+  .catch(err => console.error(err))
+    // const options = {
+    //     method: 'POST',
+    //     body: JSON.stringify( basket ),
+    //     headers: {'Content-Type': 'application/json'}
+    //   };
+    //   fetch(apiOrdersUrl, options)
+    //   .then(res => console.log(res))
+    //   .catch(err => console.error(err))
 }
 
 
