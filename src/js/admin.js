@@ -9,12 +9,15 @@ const api = new ExcursionsAPI();
 function init () {
   console.log("admin");
   formElAdmin.addEventListener("submit", handleSubmit);
-
+  api.loadData()
+  .then(data => addExcursionsToDOM(data))
+  .catch(err => console.error(err))
+  // load data to admin panel
 }
 
 const apiUrl = 'http://localhost:3000/excursions';
 const formElAdmin = document.querySelector(".form");
-const excursionsArray = [];
+// const excursionsArray = [];
 const ulElement = document.querySelector(".excursions");
 let getAccesToId;
 
@@ -29,20 +32,20 @@ const handleSubmit = (e) => {
   formElAdmin.reset()
 };
 
-let setId = 0;
+// let setId = 0;
 const passFormData = (name, description, adultPrice, childPrice) => {
-  setId++;
+  // setId++;
   const obj = {
-    id: setId,
+    // id: setId,
     title: name,
     excDesc: description,
     aPrice: +adultPrice,
     chPrice: +childPrice,
   };
 
-  excursionsArray.push(obj);
-  addExcursionsToDOM(excursionsArray)
-  console.log(excursionsArray, 'pass form data');
+  // excursionsArray.push(obj);
+  // addExcursionsToDOM(excursionsArray)
+  // console.log(excursionsArray, 'pass form data');
   sendExcursionsToApi(obj)
 };
 
@@ -58,27 +61,31 @@ const sendExcursionsToApi = (obj) => {
   fetch(apiUrl, options)
   .then(res => console.log(res))
   .catch(err => console.error(err))
+  .finally(init)
+  // api.loadData()
+  // .then(data => addExcursionsToDOM(data))
+  // .catch(err => console.error(err))
 }
 
 const addExcursionsToDOM = (excursionsArray) => {
 ulElement.innerHTML = "";
 excursionsArray.forEach(el => {
     ulElement.innerHTML += `
-    <li data-id=${el.id} class="excursions__item excursions__item--prototype">
+    <li data-id=${el.id} class="excursions__item excursions__item--prototype ">
           <header class="excursions__header">
-            <h2 class="excursions__title">${el.title}</h2>
-            <p class="excursions__description">
+            <h2 class="excursions__title excursions__edit">${el.title}</h2>
+            <p class="excursions__description excursions__edit">
              ${el.excDesc}</p>
           </header>
           <form class="excursions__form">
             <div class="excursions__field">
               <label class="excursions__field-name">
-                Dorosły: <strong>${el.aPrice}</strong>PLN
+                Dorosły: <strong class="excursions__edit">${el.aPrice}</strong>PLN
               </label>
             </div>
             <div class="excursions__field">
               <label class="excursions__field-name">
-                Dziecko: <strong>${el.chPrice}</strong>PLN
+                Dziecko: <strong class="excursions__edit">${el.chPrice}</strong>PLN
               </label>
             </div>
             <div class="excursions__field excursions__field--submit">
@@ -118,93 +125,69 @@ const handleUpdateRemove = (e) => {
 e.preventDefault();
 if (e.target.value === 'edytuj'){
   // edytuj 
-  console.log(e.target.value)
+  // console.log(e.target.value)
   const currentListItem = e.target.parentElement.parentElement.parentElement;
-  getTheValueOfCurrentExcursion(currentListItem);
+  // getTheValueOfCurrentExcursion(currentListItem);
+  
+  // if(isEditable) {
+  //   updateExcursion(currentListItem, isEditable)
+  // }
+  // else {
+  //   e.target.innerText = 'Zapisz';
+  //   e.target.contentEditable = true;
+  // }
+  updateExcursion(e)
 }
 if (e.target.value === "usuń") {
   // usun
-  console.log(e.target.value)
   const currentListItem = e.target.parentElement.parentElement.parentElement;
   deleteExcursion(currentListItem)
-  console.log(excursionsArray, 'delete excursion')
+ 
+  // deleteExcursion(currentListItem)
+  // console.log(excursionsArray, 'delete excursion')
 }
 }
-
-
-const getTheValueOfCurrentExcursion = (listItem) => {
-  formElAdmin.removeEventListener('submit', handleSubmit);
-  getAccesToId = +listItem.dataset.id;
-  for (let i = 0; i < excursionsArray.length; i++) {
-    if (getAccesToId === excursionsArray[i].id) {
-      const [name, description, adultPrice, childPrice] = formElAdmin.elements;
-      name.value = excursionsArray[i].title;
-      description.value = excursionsArray[i].excDesc;
-      adultPrice.value = excursionsArray[i].aPrice;
-      childPrice.value = excursionsArray[i].chPrice;
-      formElAdmin.addEventListener('submit', handleUpdateSubmit)
+const updateExcursion = (e) => {
+  const currentListItem = e.target.parentElement.parentElement.parentElement;
+  const currentListItemId = +currentListItem.dataset.id;
+  const valueToUpdate = currentListItem.querySelectorAll('.excursions__edit');
+  const isEditable = [...valueToUpdate].every(value => value.isContentEditable);
+  if (isEditable) {
+    const data = {
+      title: valueToUpdate[0].innerText,
+      excDesc: valueToUpdate[1].innerText,
+      aPrice: valueToUpdate[2].innerText,
+      chPrice: valueToUpdate[3].innerText,
     }
-    
-  }
-}
-
-const updateExcursion = (name, description, adultPrice, childPrice) => {
-  let updateObject = {
-    id: getAccesToId,
-    title: name,
-    excDesc: description,
-    aPrice: +adultPrice,
-    chPrice: +childPrice,
-  }
-  const matchIdObj = excursionsArray.find(el => el.id === updateObject.id);
-
-  if (matchIdObj) {
-    matchIdObj.id = getAccesToId
-    matchIdObj.title = name;
-    matchIdObj.excDesc = description;
-    matchIdObj.aPrice = adultPrice;
-    matchIdObj.chPrice = childPrice;
-    formElAdmin.removeEventListener('submit', handleUpdateSubmit)
-    formElAdmin.addEventListener('submit', handleSubmit);
     const options = {
       method: 'PUT',
-      body: JSON.stringify( matchIdObj ),
-      headers: { 'Content-Type': 'application/json'}
-    };
-    fetch(`${apiUrl}/${getAccesToId}`, options) 
-    .then(res => console.log(res))
-    .catch(err => console.error(err))
-     
-  
+      body: JSON.stringify( data ),
+      headers: { 'Content-Type': 'application/json' }
+      }
+      fetch(`${apiUrl}/${currentListItemId}`, options)
+        .then(resp => console.log(resp))
+        .catch(err => console.error(err))
+        .finally( () => {
+        e.target.innerText = 'edytuj';
+        valueToUpdate.forEach(
+        value => value.contentEditable = false);
+        init})
   }
-  addExcursionsToDOM(excursionsArray);
+  else {
+    e.target.innerText = 'edytuj';
+    valueToUpdate.forEach(value => value.contentEditable = true)
   }
-  
-const handleUpdateSubmit = (e) => {
-e.preventDefault();
-const [name, description, adultPrice, childPrice] = formElAdmin.elements;
-
-  const nameValue = name.value;
-  const descriptionValue = description.value;
-  const adultPriceValue = parseInt(adultPrice.value);
-  const childPriceValue = parseInt(childPrice.value);
-  updateExcursion(nameValue, descriptionValue, adultPriceValue, childPriceValue);
-  formElAdmin.reset();
-
 }
 
 
 const deleteExcursion = (listItem) => {
   const currentListItemId = +listItem.dataset.id;
-  for (let i = 0; i < excursionsArray.length; i++) {
-    if (currentListItemId === excursionsArray[i].id) {
-      excursionsArray.splice(i, 1);
-      const displayCurrentExcursions = addExcursionsToDOM(excursionsArray);
-      const options = {method : 'DELETE'};
-      fetch(`${apiUrl}/${currentListItemId}`, options)
-      .then(res => console.log(res))
-      .catch(err => console.error(err))
-    }
-  }
-  formElAdmin.addEventListener("submit", handleSubmit);
-} 
+  console.log(currentListItemId)
+  // const id = +listItem.dataset.id;
+  const options = {method : 'DELETE'};
+        fetch(`${apiUrl}/${currentListItemId}`, options)
+        .then(res => console.log(res))
+        .catch(err => console.error(err))
+        .finally(init)
+}
+

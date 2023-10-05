@@ -1,12 +1,5 @@
 {
   "excursions": [
-    {
-      "id": 1,
-      "title": "Kraków",
-      "excDesc": "city tour",
-      "aPrice": 100,
-      "chPrice": 50
-    }
   ],
   "orders": []
 }
