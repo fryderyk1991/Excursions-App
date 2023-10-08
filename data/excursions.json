@@ -2,13 +2,23 @@
   "excursions": [
     {
       "title": "Kraków",
-      "excDesc": "eeded",
-      "aPrice": 2,
-      "chPrice": 23,
+      "excDesc": "City Tour",
+      "aPrice": 100,
+      "chPrice": 50,
       "id": 1
     }
   ],
   "orders": [
-    []
+    [
+      {
+        "id": 1,
+        "title": "Kraków",
+        "adultNumber": 2,
+        "adultPrice": 100,
+        "childNumber": 2,
+        "childPrice": 50,
+        "sum": 300
+      }
+    ]
   ]
 }
