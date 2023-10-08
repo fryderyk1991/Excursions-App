@@ -3,8 +3,10 @@ class ExcursionsAPI {
         this.apiOrdersUrl = 'http://localhost:3000/orders';
         this.apiExcursionsUrl = 'http://localhost:3000/excursions';
     }
-    _fetchExc(options) {
-        return fetch(this.apiExcursionsUrl)
+
+    _fetchExc(options, additionalPath = '') {
+        const url = this.apiExcursionsUrl + additionalPath;
+        return fetch(url, options)
         .then(res => {
             if (res.ok) {return res.json();}
             return Promise.reject(res)
@@ -15,7 +17,7 @@ class ExcursionsAPI {
        return this._fetchExc();
     }
     
-   
+    
     addData(data) {
         const options = {
             method: 'POST',
@@ -41,19 +43,13 @@ class ExcursionsAPI {
 
 
     deleteData(id) {
-        const options = {
-            method: 'DELETE',
-            body: JSON.stringify( data ),
-            headers: {
-            'Content-Type': 'application/json'
-            }
-            };
+    const options = { method: 'DELETE'};
      return this._fetchExc(options, `/${id}`);
     }
 
 
     _fetchOrders(options) {
-        return fetch(this.apiOrdersUrl)
+        return fetch(this.apiOrdersUrl, options)
         .then(res => {
             if (res.ok) {return res.json();}
             return Promise.reject(res)

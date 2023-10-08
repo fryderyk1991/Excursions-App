@@ -5,7 +5,6 @@ import ExcursionsAPI from './ExcursionsAPI';
 document.addEventListener('DOMContentLoaded', init);
 
 const api = new ExcursionsAPI();
-const apiOrdersUrl = 'http://localhost:3000/orders';
 
 function init() {
     console.log('client');
@@ -19,9 +18,6 @@ const loadExcursions = () => {
   api.loadData()
   .then(data => addExcursionToDom(data))
   .catch(err => console.error(err))
-    // fetch(apiUrl)
-    // .then(res => res.json())
-    // .then(data => addExcursionToDom( data ))
 }  
 
 const addExcursionToDom = (excursionsArr) => {
@@ -206,14 +202,6 @@ const validate = (formEl) => {
 const sendOrderToApi = () => {
   api.addOrder(basket)
   .catch(err => console.error(err))
-    // const options = {
-    //     method: 'POST',
-    //     body: JSON.stringify( basket ),
-    //     headers: {'Content-Type': 'application/json'}
-    //   };
-    //   fetch(apiOrdersUrl, options)
-    //   .then(res => console.log(res))
-    //   .catch(err => console.error(err))
 }
 
 
