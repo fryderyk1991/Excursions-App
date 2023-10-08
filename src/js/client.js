@@ -63,19 +63,27 @@ const listItem = [...excursionsList.children];
   passTheValue(formArray);
 }
 
+const getAdultPrice = (form) => {
+  const adultPrice = form.firstElementChild.firstElementChild.firstElementChild.dataset.adult;
+  return adultPrice
+}
+const getChildPrice = (form) => {
+  const childPrice = form.firstElementChild.nextElementSibling.firstElementChild.firstElementChild.dataset.child;
+  return childPrice
+}
+
+const getTitleOfTravel = (form) => {
+  const titleofTravel = form.previousElementSibling.firstElementChild.dataset.title;
+  return titleofTravel
+}
 const passTheValue = (forms) => {
     forms.forEach(form => {
         form.addEventListener("submit", function (e) {
             e.preventDefault(e);
             const parentId = +form.parentElement.dataset.id;
-            const titleofTravel =
-              form.previousElementSibling.firstElementChild.dataset.title;
-            const adultP =
-              form.firstElementChild.firstElementChild.firstElementChild.dataset
-                .adult;
-            const childP =
-              form.firstElementChild.nextElementSibling.firstElementChild
-                .firstElementChild.dataset.child;
+            const titleofTravel = getTitleOfTravel(form);
+            const adultP = getAdultPrice(form);
+            const childP = getChildPrice(form);
             const adultNum = parseInt(form.querySelector("[name=adults]").value);
             const childNum = parseInt(form.querySelector("[name=children]").value);
             if (adultNum > 0 && adultNum < 11 && childNum > 0 && childNum < 11) {
@@ -89,7 +97,6 @@ const passTheValue = (forms) => {
                   childPrice: +childP,
                   sum: childNum * childP + adultNum * adultP,
                 };
-                console.log(obj)
                 if (!basket.some((el) => el.id === obj.id)) {
                   basket.push(obj);
                   displayBasketData(basket);
@@ -104,7 +111,6 @@ const passTheValue = (forms) => {
 
 const displayBasketData = (basket) => {
     const summaryList = document.querySelector(".summary");
-    const totalPriceOfBasket = document.querySelector("summary__order-price");
     summaryList.innerHTML = "";
     let total = 0;
     basket.forEach(exc => {
@@ -156,7 +162,6 @@ const validate = (formEl) => {
     const listErrors = document.querySelector('.order__list-errors');
     listErrors.innerText = "";
     const errors = [];
-    const emailValue = formEl.elements[1].value;
     fields.forEach(field => {
         const value = formEl.elements[field.name].value;
         if (field) {

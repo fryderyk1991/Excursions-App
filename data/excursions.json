@@ -1,5 +1,14 @@
 {
   "excursions": [
+    {
+      "title": "Kraków",
+      "excDesc": "eeded",
+      "aPrice": 2,
+      "chPrice": 23,
+      "id": 1
+    }
   ],
-  "orders": []
+  "orders": [
+    []
+  ]
 }
