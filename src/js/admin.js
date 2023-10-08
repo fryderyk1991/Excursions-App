@@ -107,11 +107,12 @@ const updateExcursion = (e) => {
   const valueToUpdate = currentListItem.querySelectorAll('.excursions__edit');
   const isEditable = [...valueToUpdate].every(value => value.isContentEditable);
   if (isEditable) {
+    const [title, excDesc, aPrice, chPrice] = valueToUpdate;
     const data = {
-      title: valueToUpdate[0].innerText,
-      excDesc: valueToUpdate[1].innerText,
-      aPrice: valueToUpdate[2].innerText,
-      chPrice: valueToUpdate[3].innerText,
+      title: title.innerText,
+      excDesc: excDesc.innerText,
+      aPrice: aPrice.innerText,
+      chPrice: chPrice.innerText,
     }
     api.updateData(currentListItemId, data)
     .catch(err => console.error(err))
