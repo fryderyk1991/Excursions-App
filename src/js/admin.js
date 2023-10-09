@@ -77,7 +77,7 @@ const handleUpdateRemove = (e) => {
   if (e.target.value === "edytuj") {
     updateExcursion(e);
   }
-  if (e.target.value === "usuń") {
+  else if (e.target.value === "usuń") {
     deleteExcursion(e);
   }
 };

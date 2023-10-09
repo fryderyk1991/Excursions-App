@@ -16,9 +16,8 @@ const formArray = [];
 let basket = [];
 
 const loadExcursions = () => {
-  api
-    .loadData()
-    .then((data) => addExcursionToDom(data))
+  api.loadData()
+  .then((data) => addExcursionToDom(data))
     .catch((err) => console.error(err));
 };
 
@@ -117,6 +116,7 @@ const displayBasketData = (basket) => {
     btn.addEventListener("click", deleteBasketData);
   });
   totalPrice.innerHTML = `${total} PLN`;
+  console.log(basket)
 };
 
 const totalPrice = document.querySelector(".order__total-price-value");
@@ -124,8 +124,6 @@ const totalPrice = document.querySelector(".order__total-price-value");
 const deleteBasketData = (e) => {
   const currentBtn = e.target;
   const currentBtnId = +currentBtn.dataset.id;
-  console.log(currentBtnId);
-  console.log(currentBtn);
   for (let i = 0; i < basket.length; i++) {
     if (basket[i].id === currentBtnId) {
       basket.splice(i, 1);
@@ -154,7 +152,7 @@ const validate = (formEl) => {
   });
 
   if (errors.length === 0) {
-    sendOrderToApi();
+    sendOrderToApi(formEl);
     basket = [];
     totalPrice.innerHTML = `0 PLN`;
     const summaryList = document.querySelector(".summary");
@@ -185,8 +183,17 @@ const handleSubmit = (e) => {
   validate(formEl);
 };
 
-const sendOrderToApi = () => {
-  api.addOrder(basket).catch((err) => console.error(err));
+const sendOrderToApi = (formEl) => {
+  const [name, email] = formEl.elements;
+  const nameValue = name.value;
+  const emailValue = email.value;
+  const objPerson = {
+    name: nameValue,
+    email: emailValue,
+  }
+  basket.push(objPerson)
+  api.addOrder(basket)
+  .catch((err) => console.error(err))
 };
 
 const orderForm = document.querySelector(".order");
