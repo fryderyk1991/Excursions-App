@@ -1,20 +1,6 @@
 {
-  "excursions": [],
+  "excursions": [
+  ],
   "orders": [
-    [
-      {
-        "id": 1,
-        "title": "Kraków",
-        "adultNumber": 2,
-        "adultPrice": 150,
-        "childNumber": 2,
-        "childPrice": 20,
-        "sum": 340
-      },
-      {
-        "name": "Adam Kowalski",
-        "email": "adam@wp.pl"
-      }
-    ]
   ]
 }

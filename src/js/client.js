@@ -116,7 +116,7 @@ const displayBasketData = (basket) => {
     btn.addEventListener("click", deleteBasketData);
   });
   totalPrice.innerHTML = `${total} PLN`;
-  console.log(basket)
+  // console.log(basket)
 };
 
 const totalPrice = document.querySelector(".order__total-price-value");
@@ -185,14 +185,15 @@ const handleSubmit = (e) => {
 
 const sendOrderToApi = (formEl) => {
   const [name, email] = formEl.elements;
-  const nameValue = name.value;
-  const emailValue = email.value;
-  const objPerson = {
-    name: nameValue,
-    email: emailValue,
+
+  const objBasket = {
+    name: name.value,
+    email: email.value,
+
+    excurions: basket,
   }
-  basket.push(objPerson)
-  api.addOrder(basket)
+
+  api.addOrder(objBasket)
   .catch((err) => console.error(err))
 };
 
