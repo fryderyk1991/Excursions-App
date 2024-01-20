@@ -1,5 +1,6 @@
 # Excursions-App
-I would like to present you live version of [Excursions-App](link)
+I would like to present you live version of [Excursions-App](link).
+
 This is a CRUD application where you can manage excursions with Admin panel.
 
 Available options:
