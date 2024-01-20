@@ -20,7 +20,7 @@ From the Client side, there is a possibility to add number of people to the curr
 ## 💿 Installation
 The project uses [node](https://nodejs.org/en/) and [npm](https://www.npmjs.com/). Having them installed, type into the terminal: `npm i`.
 
-This project uses [JSON Server](https://www.npmjs.com/package/json-server). After installing it type into the terminal: `json-server --watch ./data/excursions.json`
+This project uses [json-server](https://github.com/typicode/json-server). After installing it type into the terminal: `json-server --watch ./data/excursions.json --port`
 
 
 ## 🙋‍♂️ Feel free to contact me
