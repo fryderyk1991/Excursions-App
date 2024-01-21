@@ -1,13 +1,17 @@
 # Excursions-App
 I would like to present you live version of [Excursions-App](link).
 
-This is a CRUD application where you can manage excursions with Admin panel.
+This is a CRUD application where you can manage excursions with Admin and Cient panel.
 
-Available options:
+Admin options:
 - add excursion 
 - delete excursion
 - update excursion
 ---
+Client options:
+- add number of people to order
+- add order to order panel 
+- finally order excursion
 From the Client side, there is a possibility to add number of people to the current excursion and then add it to the panel order, where you will be able to order excursion.
 
 ## 💡 Technologies
