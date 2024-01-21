@@ -1,4 +1,6 @@
+import "./../css/main.css"
 import "./../css/client.css";
+
 
 import ExcursionsAPI from "./ExcursionsAPI";
 import { addClientHtml } from "./htmlClientStructure";

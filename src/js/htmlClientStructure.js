@@ -8,12 +8,12 @@ return `
 <form class="excursions__form">
     <div class="excursions__field">
         <label class="excursions__field-name">
-            Dorosły: <span class="excursions__price" data-adult="${aPrice}">${aPrice}</span>PLN x <input class="excursions__field-input" name="adults" />
+            Dorosły: <span class="excursions__price" data-adult="${aPrice}">${aPrice}</span>PLN x <input class="excursions__field-input field" name="adults" />
         </label>
     </div>
     <div class="excursions__field">
         <label class="excursions__field-name">
-            Dziecko:  <span class="excursions__price" data-child="${chPrice}">${chPrice}</span>PLN x <input class="excursions__field-input" name="children" />
+            Dziecko:  <span class="excursions__price" data-child="${chPrice}">${chPrice}</span>PLN x <input class="excursions__field-input field" name="children" />
         </label>
     </div>
     <div class="excursions__field excursions__field--submit">

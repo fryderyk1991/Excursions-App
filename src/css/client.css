@@ -1,48 +1,92 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+
+.order__total-price {
+    margin-bottom: 2rem;
+    font-weight: 700;
+    color: #f96d00;
+}
+.order__field-input {
+    background-color: transparent;
+    border: none;
+    border-bottom: 1px solid #fff;
+    padding: 0.5rem;
+    margin: 0.8rem 0;
+    color: #fff;
+}
+.order__field-name {
+    color: #f96d00;
+    font-size: 1.4rem;
+}
+.order__field-submit {
+    background-color: #f96d00;
+    border: none;
+    padding: 1rem 1.8rem; 
+    border-radius: 0.8rem;
+    font-weight: 700;
+    font-size: 1.4rem;
+    cursor: pointer;
+    margin-top: 3rem;
+}
+.order__field-submit:hover {
+    background-color: #ec7113;
+}
+.client__heading {
+    color: #f96d00;
+    font-size: 10rem;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    opacity: 0.4;
+    transform: translate(-50%, -50%);
+    text-transform: uppercase;
+}
+.excursions__item {
+    max-width: 50%;
+    border: 1px solid #f96d00;
+    border-radius: 0.8rem;
+    padding: 1.5rem;
+    margin: 1rem;
+}
+.excursions__title {
+    color: #f96d00;
+}
+.excursions__description {
+    margin-top: 1rem;
+}
+.excursions__form {
+    margin-top: 1rem;
+}
+.excursions__field {
+    margin-top: 2rem;
+}
+.excursions__field-name {
+    color: #f96d00;
+    font-size: 1.4rem;
+}
+.excursions__field-input {
+    background-color: transparent;
+    border: none;
+    border-bottom: 1px solid #fff;
+    padding: 0.5rem;
+    margin: 0.8rem 0;
+    color: #fff;
+} 
+.excursions__field-input--submit {
+    padding: 1rem 1.8rem; 
+    color: #fff;
+    border-radius: 0.8rem;
+    border: none;
+    font-weight: 700;
+    font-size: 1.4rem;
+    cursor: pointer;
+    background-color: #f96d00;
+}
+.excursions__field-input--submit:hover {
+    background-color: #ec7113;
+}
+.button__href--admin {
+    background-color:  #4FE4C3;
 }
 
-ul {
-    list-style: none;
-}
-input, label {
-    display: block;
-}
-.panel {
-    display: flex;
-    margin: 0 auto;
-    justify-content: space-between;
-    max-width: 1200px;
-    padding: 30px 0;
-}
-
-.panel__excursins {
-    width: 70%;
-}
-
-.excursions {
-    display: flex;
-    flex-wrap: wrap;
-}
-
-.excurions__item {
-    border: 1px solid #bbb;
-    border-radius: 5px;
-    margin: 10px;
-    padding: 20px;
-    width: calc(50% - 20px);
-}
-
-.panel__form {
-    background-color: #f4f4f4;
-    padding: 20px;
-    width: 30%;
-}
-
-.uploader, .order {
-    border-bottom: 1px solid #bbb;
-    margin-bottom: 20px;
-    padding-bottom: 20px;
+.button__href--admin:hover {
+    background-color: #35d6b3;
 }

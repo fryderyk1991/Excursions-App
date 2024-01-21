@@ -1,3 +1,4 @@
+import "./../css/main.css";
 import "./../css/admin.css";
 
 import ExcursionsAPI from "./ExcursionsAPI";

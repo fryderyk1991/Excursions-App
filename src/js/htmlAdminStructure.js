@@ -17,9 +17,9 @@ export const addAdminHtml = (id, title, excDesc, aPrice, chPrice) => {
         </label>
       </div>
       <div class="excursions__field excursions__field--submit">
-        <button value="edytuj">edytuj
+        <button class="excursions__field--edit excursions__btn" value="edytuj">edytuj
         </button>
-        <button value="usuń">usuń
+        <button class="excursions__field--delete excursions__btn" value="usuń">usuń
         </button>
       </div>
   </form>
