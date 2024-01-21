@@ -12,7 +12,7 @@ Client options:
 - add number of people to order
 - add order to order panel 
 - finally order excursion
-From the Client side, there is a possibility to add number of people to the current excursion and then add it to the panel order, where you will be able to order excursion.
+
 
 ## 💡 Technologies
 <div >
