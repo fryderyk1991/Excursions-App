@@ -1,4 +1,33 @@
 {
-  "excursions": [],
+  "excursions": [
+    {
+      "title": "",
+      "excDesc": "",
+      "aPrice": 0,
+      "chPrice": 0,
+      "id": 1
+    },
+    {
+      "title": "",
+      "excDesc": "",
+      "aPrice": 0,
+      "chPrice": 0,
+      "id": 2
+    },
+    {
+      "title": "",
+      "excDesc": "",
+      "aPrice": 0,
+      "chPrice": 0,
+      "id": 3
+    },
+    {
+      "title": "edde",
+      "excDesc": "eded",
+      "aPrice": 0,
+      "chPrice": 2,
+      "id": 4
+    }
+  ],
   "orders": []
 }
