@@ -1,9 +1,7 @@
 class ExcursionsAPI {
     constructor() {
-        // this.apiOrdersUrl = 'http://localhost:3000/orders';
-        // this.apiExcursionsUrl = 'http://localhost:3000/excursions';
-        this.apiOrdersUrl = process.env.NETLIFY_ORDERS_API || 'http://localhost:3000/orders';
-        this.apiExcursionsUrl = process.env.NETLIFY_EXCURSIONS_API || 'http://localhost:3000/excursions';
+        this.apiOrdersUrl = process.env.NODE_ENV === 'development' ? 'http://localhost:3000/orders' : process.env.NETLIFY_ORDERS_API || '/.netlify/functions/orders';
+        this.apiExcursionsUrl = process.env.NODE_ENV === 'development' ? 'http://localhost:3000/excursions' : process.env.NETLIFY_EXCURSIONS_API || '/.netlify/functions/excursions';
     }
 
     _fetchExc(options, additionalPath = '') {
