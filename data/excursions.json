@@ -1,12 +1,4 @@
 {
-  "excursions": [
-    {
-      "title": "Lorem",
-      "excDesc": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nulla iure laudantium ullam nesciunt nihil, numquam, itaque officiis doloribus quia harum optio consectetur est earum! Quas voluptatum expedita itaque excepturi iste.",
-      "aPrice": 100,
-      "chPrice": 100,
-      "id": 1
-    }
-  ],
+  "excursions": [],
   "orders": []
 }

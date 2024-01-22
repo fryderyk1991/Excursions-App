@@ -39,10 +39,5 @@ module.exports = {
       filename: "admin.html",
       chunks: ["admin"],
     }),
-    new GoogleFontsPlugin({
-        fonts: [
-          { family: "Inter", variants: ["300", "400", "700"] },
-        ],
-      }),
   ],
 };
