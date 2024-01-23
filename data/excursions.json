@@ -1,32 +1,18 @@
 {
   "excursions": [
     {
-      "title": "",
-      "excDesc": "",
-      "aPrice": 0,
-      "chPrice": 0,
+      "title": "Kraków",
+      "excDesc": "Wycieczka do Krakowa “Dwa dni w Krakowie” to doskonała propozycja na wycieczkę szkolną lub wycieczkę firmową dla grup zorganizowanych. Program uwzględnia zwiedzanie Krakowa z przewodnikiem i najważniejszych atrakcji małopolskiej stolicy: Wawel, Stare Miasto, Kopiec Kościuszki, Kazimierz i Łagiewniki oraz zwiedzanie Kopalni Soli Wieliczka.",
+      "aPrice": 1000,
+      "chPrice": 500,
       "id": 1
     },
     {
-      "title": "",
-      "excDesc": "",
-      "aPrice": 0,
-      "chPrice": 0,
+      "title": "Spływ dunajcem ",
+      "excDesc": "Pieniński Przełom Dunajca to niezwykłe miejsce, które zachwyca malowniczymi widokami i wyjątkowym zjawiskiem. Dunajec odwraca bowiem w części Przełomu swój nurt o 180 stopni, płynąc przez pewien czas w odwrotnym kierunku do morza, aby w końcu zawrócić z powrotem. Tego typu zjawisko występuje jeszcze tylko w jednym miejscu na świecie. Jeśli dodamy do tego majestatyczne widoki, to nie trudno uwierzyć, że spływ Dunajcem uznawany jest za jedną z największych atrakcji nie tylko w Polsce, ale również w Europie i na całym świecie.",
+      "aPrice": 500,
+      "chPrice": 250,
       "id": 2
-    },
-    {
-      "title": "",
-      "excDesc": "",
-      "aPrice": 0,
-      "chPrice": 0,
-      "id": 3
-    },
-    {
-      "title": "edde",
-      "excDesc": "eded",
-      "aPrice": 0,
-      "chPrice": 2,
-      "id": 4
     }
   ],
   "orders": []

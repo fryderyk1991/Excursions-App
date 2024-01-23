@@ -37,13 +37,6 @@
 
 .admin__heading {
     color: #4FE4C3;
-    font-size: 10rem;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    opacity: 0.4;
-    transform: translate(-50%, -50%);
-    text-transform: uppercase;
 }
 .excursions__item {
     max-width: 50%;
