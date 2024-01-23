@@ -1,8 +1,10 @@
 ### Client
-![client__panel](https://github.com/fryderyk1991/Excursions-App/assets/95125510/cda03386-53d6-411f-992a-7508172b37b6)
+![client ](https://github.com/fryderyk1991/Excursions-App/assets/95125510/4ff27ca5-bd7f-4085-9df7-4d461cd533b5)
+
 
 ### Admin
-![Admin__panel](https://github.com/fryderyk1991/Excursions-App/assets/95125510/fed24720-6130-4215-9696-80b1d77e095c)
+![admin](https://github.com/fryderyk1991/Excursions-App/assets/95125510/73baf369-2a48-45c7-93bd-6f5f954e5a2b)
+
 
 # Excursions-App
 I would like to present you live version of [Excursions-App](https://main--resilient-brioche-78d0c8.netlify.app/).
