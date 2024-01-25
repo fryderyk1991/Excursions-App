@@ -1,6 +1,7 @@
 class ExcursionsAPI {
     constructor() {
-        this.apiExcursionsUrl =  'http://localhost:3000/excursions';
+        // this.apiExcursionsUrl =  'http://localhost:3000/excursions';
+         this.apiExcursionsUrl =  'https://643da048f0ec48ce9060d613.mockapi.io/excursions';
     }
 
     _fetchExc(options, additionalPath = '') {
