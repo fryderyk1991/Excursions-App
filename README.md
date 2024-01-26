@@ -33,9 +33,6 @@ Client options:
 ## 💿 Installation
 The project uses [node](https://nodejs.org/en/) and [npm](https://www.npmjs.com/). Having them installed, type into the terminal: `npm i`.
 
-This project uses [json-server](https://github.com/typicode/json-server). After installing it type into the terminal: `json-server --watch ./data/excursions.json`
-
-
 ## 🙋‍♂️ Feel free to contact me
 Find me on [Linkedin](https://www.linkedin.com/in/fryderyk-jellinek/) 
 ## 👏 Thanks / Special thanks / Credits
